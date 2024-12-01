@@ -4,6 +4,12 @@
 
 Quickly load and save configurations via JSON.
 
+## Warning
+
+- The package **System.Text.Json** used by this project has at least one **vulnerability** with **high** severity. Please update to the **latest version** as soon as possible to resolve the critical issue.
+
+- As of 1.4.0, the Try* and Safe* methods have been removed as unnecessary and to streamline dependencies. Please install [Asjc.Utils](https://www.nuget.org/packages/Asjc.Utils) separately to use the simple Try method.
+
 ## Quick Start
 
 ```csharp
