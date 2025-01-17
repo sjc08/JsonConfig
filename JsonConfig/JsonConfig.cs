@@ -3,13 +3,18 @@ using System.Text.Json.Serialization;
 
 namespace Asjc.JsonConfig
 {
+    /// <summary>
+    /// Provides an implementation for quickly loading and saving configurations via JSON.
+    /// </summary>
     public abstract class JsonConfig
     {
         /// <summary>
         /// Gets or sets the path to the config file.
         /// </summary>
         [JsonIgnore]
+#pragma warning disable CS8618
         public string Path { get; set; }
+#pragma warning restore CS8618
 
         /// <summary>
         /// Gets or sets the default <see cref="Path"/> for the current class.
@@ -20,7 +25,9 @@ namespace Asjc.JsonConfig
         /// Gets or sets the options to use.
         /// </summary>
         [JsonIgnore]
+#pragma warning disable CS8618
         public JsonConfigOptions Options { get; set; }
+#pragma warning restore CS8618
 
         /// <summary>
         /// Gets or sets the default <see cref="Options"/> for the current class.
@@ -63,14 +70,29 @@ namespace Asjc.JsonConfig
         /// </summary>
         public event Action<JsonConfig>? AfterSave;
 
+        /// <summary>
+        /// Raises the <see cref="Reading"/> event.
+        /// </summary>
         protected virtual void OnReading() => Reading?.Invoke(this);
 
+        /// <summary>
+        /// Raises the <see cref="Creating"/> event.
+        /// </summary>
         protected virtual void OnCreating() => Creating?.Invoke(this);
 
+        /// <summary>
+        /// Raises the <see cref="Loaded"/> event.
+        /// </summary>
         protected virtual void OnLoaded() => Loaded?.Invoke(this);
 
+        /// <summary>
+        /// Raises the <see cref="BeforeSave"/> event.
+        /// </summary>
         protected virtual void OnBeforeSave() => BeforeSave?.Invoke(this);
 
+        /// <summary>
+        /// Raises the <see cref="AfterSave"/> event.
+        /// </summary>
         protected virtual void OnAfterSave() => AfterSave?.Invoke(this);
 
         /// <summary>
@@ -98,12 +120,20 @@ namespace Asjc.JsonConfig
             return config;
         }
 
+        /// <summary>
+        /// Load the config only by reading the config file.
+        /// </summary>
+        /// <typeparam name="T">The type of config to be loaded.</typeparam>
+        /// <returns>The loaded config.</returns>
         public static T? Read<T>() where T : JsonConfig, new() => Read<T>(new T().DefaultPath, new T().DefaultOptions);
 
+        /// <inheritdoc cref="Read{T}()"/>
         public static T? Read<T>(string path) where T : JsonConfig, new() => Read<T>(path, new T().DefaultOptions);
 
+        /// <inheritdoc cref="Read{T}()"/>
         public static T? Read<T>(JsonConfigOptions options) where T : JsonConfig, new() => Read<T>(new T().DefaultPath, options);
 
+        /// <inheritdoc cref="Read{T}()"/>
         public static T? Read<T>(string path, JsonConfigOptions options) where T : JsonConfig, new()
         {
             string json = File.ReadAllText(path);
@@ -117,12 +147,20 @@ namespace Asjc.JsonConfig
             return config;
         }
 
+        /// <summary>
+        /// Load the config only by creating a new one.
+        /// </summary>
+        /// <typeparam name="T">The type of config to be loaded.</typeparam>
+        /// <returns>The loaded config.</returns>
         public static T Create<T>() where T : JsonConfig, new() => Create<T>(new T().DefaultPath, new T().DefaultOptions);
 
+        /// <inheritdoc cref="Create{T}()"/>
         public static T Create<T>(string path) where T : JsonConfig, new() => Create<T>(path, new T().DefaultOptions);
 
+        /// <inheritdoc cref="Create{T}()"/>
         public static T Create<T>(JsonConfigOptions options) where T : JsonConfig, new() => Create<T>(new T().DefaultPath, options);
 
+        /// <inheritdoc cref="Create{T}()"/>
         public static T Create<T>(string path, JsonConfigOptions options) where T : JsonConfig, new()
         {
             T config = new();

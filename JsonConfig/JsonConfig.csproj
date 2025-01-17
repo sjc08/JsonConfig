@@ -9,13 +9,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.4.1</Version>
+    <Version>1.4.2</Version>
     <Authors>AlexSJC</Authors>
     <Description>Quickly load and save configurations via JSON.</Description>
     <Copyright>Copyright © $(Authors) $([System.DateTime]::Now.Year)</Copyright>
     <PackageIcon>Icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/SJC08/JsonConfig</RepositoryUrl>
+    <RepositoryUrl>https://github.com/sjc08/JsonConfig</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 

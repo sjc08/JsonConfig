@@ -9,8 +9,15 @@ namespace Asjc.JsonConfig
     /// </summary>
     public sealed class JsonConfigOptions
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JsonConfigOptions"/> class.
+        /// </summary>
         public JsonConfigOptions() { }
 
+        /// <summary>
+        /// Copies the options from a <see cref="JsonConfigOptions"/> instance to a new instance.
+        /// </summary>
+        /// <param name="options">The options instance to copy options from.</param>
         public JsonConfigOptions(JsonConfigOptions options)
         {
             CreateNew = options.CreateNew;
@@ -28,6 +35,9 @@ namespace Asjc.JsonConfig
         /// </summary>
         public bool SaveNew { get; set; } = true;
 
+        /// <summary>
+        /// Gets or sets the specified <see cref="JsonSerializerOptions"/>.
+        /// </summary>
         public JsonSerializerOptions SerializerOptions { get; set; } = new()
         {
             AllowTrailingCommas = true,
