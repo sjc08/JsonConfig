@@ -22,7 +22,7 @@ namespace Asjc.JsonConfig
         {
             CreateNew = options.CreateNew;
             SaveNew = options.SaveNew;
-            SerializerOptions = options.SerializerOptions;
+            SerializerOptions = new JsonSerializerOptions(options.SerializerOptions);
         }
 
         /// <summary>
@@ -43,10 +43,7 @@ namespace Asjc.JsonConfig
             AllowTrailingCommas = true,
             Converters = { new JsonStringEnumConverter() },
             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-#if NETCOREAPP3_1
-#else
             NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals | JsonNumberHandling.AllowReadingFromString,
-#endif
             PropertyNameCaseInsensitive = true,
             ReadCommentHandling = JsonCommentHandling.Skip,
             WriteIndented = true
