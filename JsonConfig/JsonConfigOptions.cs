@@ -43,7 +43,10 @@ namespace Asjc.JsonConfig
             AllowTrailingCommas = true,
             Converters = { new JsonStringEnumConverter() },
             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+#if NETCOREAPP3_1
+#else
             NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals | JsonNumberHandling.AllowReadingFromString,
+#endif
             PropertyNameCaseInsensitive = true,
             ReadCommentHandling = JsonCommentHandling.Skip,
             WriteIndented = true

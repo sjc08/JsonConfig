@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;netcoreapp3.1;net48;netstandard2.0;netstandard2.1</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.4.2</Version>
+    <Version>1.4.3</Version>
     <Authors>AlexSJC</Authors>
     <Description>Quickly load and save configurations via JSON.</Description>
     <Copyright>Copyright © $(Authors) $([System.DateTime]::Now.Year)</Copyright>
@@ -30,7 +30,7 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48' Or '$(TargetFramework)' == 'netstandard2.0' Or '$(TargetFramework)' == 'netstandard2.1'">
     <PackageReference Include="System.Text.Json" Version="9.0.0" />
   </ItemGroup>
 

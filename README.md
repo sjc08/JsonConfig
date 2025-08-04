@@ -4,10 +4,6 @@
 
 Quickly load and save configurations via JSON.
 
-## Warning
-
-- The package **System.Text.Json** used by this project has at least one **vulnerability** with **high** severity. Please update to the **latest version** as soon as possible to resolve the critical issue.
-
 ## Quick Start
 
 ```csharp
